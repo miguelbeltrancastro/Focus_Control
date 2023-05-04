@@ -1,10 +1,9 @@
-//www.elegoo.com
-//2016.12.09
-
 // Arduino pin numbers
 const int SW_pin = 2; // digital pin connected to switch output
 const int X_pin = 0; // analog pin connected to X output
 const int Y_pin = 1; // analog pin connected to Y output
+
+bool locked = true;
 
 void setup() {
   pinMode(SW_pin, INPUT);
@@ -13,14 +12,15 @@ void setup() {
 }
 
 void loop() {
-  Serial.print("Switch:  ");
-  Serial.print(digitalRead(SW_pin));
-  Serial.print("\n");
-  Serial.print("X-axis: ");
-  Serial.print(analogRead(X_pin));
-  Serial.print("\n");
-  Serial.print("Y-axis: ");
-  Serial.println(analogRead(Y_pin));
-  Serial.print("\n\n");
+  locked = digitalRead(SW_pin);
+  if (!locked){
+    Serial.print("\n");
+    Serial.print("X-axis: ");
+    Serial.print(analogRead(X_pin));
+    Serial.print("\n");
+    Serial.print("Y-axis: ");
+    Serial.println(analogRead(Y_pin));
+    Serial.print("\n\n");
+  }
   delay(500);
 }
