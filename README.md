@@ -1,2 +1,2 @@
 # Focus_Control
- Control for DSLR focus
+ Use Arduino to control focus of DSLR cameras
