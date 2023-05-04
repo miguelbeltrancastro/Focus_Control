@@ -12,15 +12,21 @@ void setup() {
 }
 
 void loop() {
-  locked = digitalRead(SW_pin);
-  if (!locked){
-    Serial.print("\n");
+  if (digitalRead(SW_pin)==0){
+    locked= !locked;
+    if (!locked)
+      Serial.print("Desbloqueo \n");    
+    else
+      Serial.print("Bloqueo \n");
+      
+  }
+  if (locked==false){
     Serial.print("X-axis: ");
     Serial.print(analogRead(X_pin));
     Serial.print("\n");
     Serial.print("Y-axis: ");
     Serial.println(analogRead(Y_pin));
-    Serial.print("\n\n");
-  }
-  delay(500);
+    Serial.print("\n");
+ }
+  delay(250);
 }
