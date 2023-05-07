@@ -12,6 +12,8 @@ void setup() {
 }
 
 void loop() {
+
+  //Implement locked turning with joystick switch
   if (digitalRead(SW_pin)==0){
     locked= !locked;
     if (!locked)
@@ -20,8 +22,9 @@ void loop() {
       Serial.print("Bloqueo \n");
       
   }
+
+  //Turn motor if not locked
   if (locked==false){
-    Serial.print("X-axis: ");
     Serial.print(analogRead(X_pin));
     Serial.print("\n");
     Serial.print("Y-axis: ");
@@ -29,4 +32,5 @@ void loop() {
     Serial.print("\n");
  }
   delay(250);
+
 }
